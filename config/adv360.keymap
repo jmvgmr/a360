@@ -153,6 +153,14 @@
             mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
         };
 
+        gtilde: grave_tilde {
+            compatible = "zmk,behavior-mod-morph";
+            label = "grave_tilde";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&kp TILDE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+        };
+
         bhash: bslh_hash {
             compatible = "zmk,behavior-mod-morph";
             label = "bslh_hash";
@@ -221,7 +229,7 @@
 &kp TAB    &kp SEMI  &kp COMMA  &kp DOT   &kp P      &kp Y    &none                                                    &macro_kinesis  &kp F    &kp G    &kp C     &kp R     &kp L    &bhash
 &kp ESC    &kp A     &kp O      &kp E     &kp U      &kp I    &none     &kp LCTRL  &kp LGUI      &kp LALT   &kp RCTRL  &none           &kp D    &kp H    &kp T     &kp N     &kp S    &kp MINUS
 &kp LSHFT  &kp APOS  &kp Q      &kp J     &kp K      &kp X                         &kp HOME      &kp PG_UP                             &kp B    &kp M    &kp W     &kp V     &kp Z    &kp RSHFT
-&mo 2      &dgrave   &ggrave    &kp LEFT  &kp RIGHT           &kp BKSP  &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &kp SPACE                &kp UP   &kp DOWN  &kp FSLH  &acaret  &mo 1
+&mo 2      &dgrave   &gtilde    &kp LEFT  &kp RIGHT           &kp BKSP  &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &kp SPACE                &kp UP   &kp DOWN  &kp FSLH  &acaret  &mo 1
             >;
         };
     };
