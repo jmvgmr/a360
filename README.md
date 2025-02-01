@@ -1,3 +1,5 @@
+# Just do the changes, run `make`, disconnect the right, connect the left, both on, press mod+1, drag the left file, do the same for the right (mod+3). That's it.
+---
 # Kinesis Advantage 360 Pro ZMK Config
 
 ## Modifying the keymap
