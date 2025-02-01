@@ -5,7 +5,7 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT_LAYER 0
-#define PRIME_LAYER 1
+#define QWERTY_LAYER 1
 #define KEYPAD_LAYER 2
 #define FN_LAYER 3
 #define MOD_LAYER 4
@@ -201,53 +201,109 @@
 
         default_layer {
             bindings = <
-&kp EQUAL      &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog PRIME_LAYER                                                          &mo MOD_LAYER           &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB        &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                           &macro_kinesis  &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-&kp ESC        &kp A      &kp S     &kp D     &kp F      &kp G   &none     &kp LCTRL  &kp LEFT_GUI      &kp LEFT_ALT  &kp RCTRL  &none           &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT      &kp Z      &kp X     &kp C     &kp V      &kp B                        &kp HOME          &kp PG_UP                                &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&mo FN_LAYER   &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BKSP  &kp DEL    &kp END           &kp PG_DN     &kp ENTER  &kp SPACE               &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo KEYPAD_LAYER
+//    ┌───────────────────┬─────────┬─────────┬─────────┬─────────┬─────────┬────────────────────┐                           ┌────────────────┬─────────┬─────────┬─────────┬─────────┬─────────┬───────────────┐
+//    │      &ptilde      │ &pkp_n1 │ &lkp_n2 │ &lkp_n3 │ &lkp_n4 │ &akp_n5 │ tog QWERTY_laltYER │                           │ mo MOD_laltYER │ &ekp_n6 │ &rkp_n7 │ &rkp_n8 │ &rkp_n9 │ &skp_n0 │    &eprcnt    │
+//    ├───────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼────────────────────┤                           ├────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼───────────────┤
+//    │        tab        │    ;    │    ,    │    .    │    P    │    Y    │                    │                           │                │    F    │    G    │    C    │    R    │    L    │    &bhash     │
+//    ├───────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼────────────────────┼──────┬──────┬──────┬──────┼────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼───────────────┤
+//    │        esc        │    A    │    O    │    E    │    U    │    I    │                    │ home │ end  │ pgup │ pgdn │                │    D    │    H    │    T    │    N    │    S    │       -       │
+//    ├───────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼────────────────────┴──────┼──────┼──────┼──────┴────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼───────────────┤
+//    │       lsft        │    '    │    Q    │    J    │    K    │    X    │                           │ lctl │ rctl │                       │    B    │    M    │    W    │    V    │    Z    │     rsft      │
+//    ├───────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼────────────────────┬──────┼──────┼──────┼──────┬────────────────┼─────────┼─────────┼─────────┼─────────┼─────────┼───────────────┤
+//    │ mo KEYPAD_laltYER │ &dgrave │ &gtilde │  left   │  rght   │         │        BKSP        │ del  │ lalt │ lgui │ ent  │      spc       │         │   up    │  down   │    /    │ &acaret │ mo FN_laltYER │
+//    └───────────────────┴─────────┴─────────┴─────────┴─────────┘         └────────────────────┴──────┴──────┴──────┴──────┴────────────────┘         └─────────┴─────────┴─────────┴─────────┴───────────────┘
+  &ptilde            &pkp_n1    &lkp_n2     &lkp_n3    &lkp_n4     &akp_n5   &tog QWERTY_LAYER                                                  &mo MOD_LAYER   &ekp_n6   &rkp_n7   &rkp_n8    &rkp_n9    &skp_n0   &eprcnt
+  &kp TAB            &kp SEMI   &kp COMMA   &kp DOT    &kp P       &kp Y     &none                                                              &none           &kp F     &kp G     &kp C      &kp R      &kp L     &bhash
+  &kp ESC            &kp A      &kp O       &kp E      &kp U       &kp I     &none               &kp HOME   &kp END     &kp PG_UP   &kp PG_DN   &none           &kp D     &kp H     &kp T      &kp N      &kp S     &kp MINUS
+  &kp LSHFT          &kp APOS   &kp Q       &kp J      &kp K       &kp X                                    &kp LCTRL   &kp RCTRL                               &kp B     &kp M     &kp W      &kp V      &kp Z     &kp RSHFT
+  &mo KEYPAD_LAYER   &dgrave    &gtilde     &kp LEFT   &kp RIGHT             &kp BKSP            &kp DEL    &kp LALT    &kp LGUI    &kp ENTER   &kp SPACE                 &kp UP    &kp DOWN   &kp FSLH   &acaret   &mo FN_LAYER
             >;
         };
 
-        prime_layer {
+        qwerty_layer {
             bindings = <
-&ptilde    &pkp_n1   &lkp_n2    &lkp_n3   &lkp_n4    &akp_n5  &tog PRIME_LAYER                                                   &mo MOD_LAYER       &ekp_n6  &rkp_n7  &rkp_n8   &rkp_n9   &skp_n0  &eprcnt
-&kp TAB    &kp SEMI  &kp COMMA  &kp DOT   &kp P      &kp Y    &none                                                    &none       &kp F    &kp G    &kp C     &kp R     &kp L    &bhash
-&kp ESC    &kp A     &kp O      &kp E     &kp U      &kp I    &none     &kp LCTRL  &kp LGUI      &kp LALT   &kp RCTRL  &none       &kp D    &kp H    &kp T     &kp N     &kp S    &kp MINUS
-&kp LSHFT  &kp APOS  &kp Q      &kp J     &kp K      &kp X                         &kp HOME      &kp PG_UP                         &kp B    &kp M    &kp W     &kp V     &kp Z    &kp RSHFT
-&mo FN_LAYER      &dgrave   &gtilde    &kp LEFT  &kp RIGHT           &kp BKSP  &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &kp SPACE            &kp UP   &kp DOWN  &kp FSLH  &acaret  &mo KEYPAD_LAYER
+//    ┌───────────────┬───┬──────┬──────┬──────┬───┬────────────────────┐                           ┌────────────────┬───┬────┬──────┬───┬───┬───────────────────┐
+//    │       =       │ 1 │  2   │  3   │  4   │ 5 │ tog QWERTY_laltYER │                           │ mo MOD_laltYER │ 6 │ 7  │  8   │ 9 │ 0 │         -         │
+//    ├───────────────┼───┼──────┼──────┼──────┼───┼────────────────────┤                           ├────────────────┼───┼────┼──────┼───┼───┼───────────────────┤
+//    │      tab      │ Q │  W   │  E   │  R   │ T │                    │                           │ &macro_kinesis │ Y │ U  │  I   │ O │ P │         \         │
+//    ├───────────────┼───┼──────┼──────┼──────┼───┼────────────────────┼──────┬──────┬──────┬──────┼────────────────┼───┼────┼──────┼───┼───┼───────────────────┤
+//    │      esc      │ A │  S   │  D   │  F   │ G │                    │ lctl │ lgui │ lalt │ rctl │                │ H │ J  │  K   │ L │ ; │         '         │
+//    ├───────────────┼───┼──────┼──────┼──────┼───┼────────────────────┴──────┼──────┼──────┼──────┴────────────────┼───┼────┼──────┼───┼───┼───────────────────┤
+//    │     lsft      │ Z │  X   │  C   │  V   │ B │                           │ home │ pgup │                       │ N │ M  │  ,   │ . │ / │       rsft        │
+//    ├───────────────┼───┼──────┼──────┼──────┼───┼────────────────────┬──────┼──────┼──────┼──────┬────────────────┼───┼────┼──────┼───┼───┼───────────────────┤
+//    │ mo FN_laltYER │ ` │ caps │ left │ rght │   │        BKSP        │ del  │ end  │ pgdn │ ent  │      spc       │   │ up │ down │ [ │ ] │ mo KEYPAD_laltYER │
+//    └───────────────┴───┴──────┴──────┴──────┘   └────────────────────┴──────┴──────┴──────┴──────┴────────────────┘   └────┴──────┴───┴───┴───────────────────┘
+  &kp EQUAL      &kp N1      &kp N2     &kp N3     &kp N4      &kp N5   &tog QWERTY_LAYER                                                         &mo MOD_LAYER    &kp N6   &kp N7   &kp N8      &kp N9     &kp N0     &kp MINUS
+  &kp TAB        &kp Q       &kp W      &kp E      &kp R       &kp T    &none                                                                     &macro_kinesis   &kp Y    &kp U    &kp I       &kp O      &kp P      &kp BSLH
+  &kp ESC        &kp A       &kp S      &kp D      &kp F       &kp G    &none               &kp LCTRL   &kp LEFT_GUI   &kp LEFT_ALT   &kp RCTRL   &none            &kp H    &kp J    &kp K       &kp L      &kp SEMI   &kp SQT
+  &kp LSHFT      &kp Z       &kp X      &kp C      &kp V       &kp B                                    &kp HOME       &kp PG_UP                                   &kp N    &kp M    &kp COMMA   &kp DOT    &kp FSLH   &kp RSHFT
+  &mo FN_LAYER   &kp GRAVE   &kp CAPS   &kp LEFT   &kp RIGHT            &kp BKSP            &kp DEL     &kp END        &kp PG_DN      &kp ENTER   &kp SPACE                 &kp UP   &kp DOWN    &kp LBKT   &kp RBKT   &mo KEYPAD_LAYER
             >;
         };
 
         keypad {
             bindings = <
-&kp EQUAL  &kp N2     &kp N1     &kp N3     &kp N4        &kp N5  &trans                                                           &mo MOD_LAYER      &kp N6    &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS
-&kp TAB    &kp Q      &kp W      &kp E      &kp R         &kp T   &none                                                            &none      &kp Y     &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp BSLH
-&kp ESC    &kp A      &kp S      &kp D      &kp F         &kp G   &none      &kp LCTRL  &kp LEFT_GUI      &kp LEFT_ALT  &kp RCTRL  &none      &kp H     &kp KP_N4   &kp KP_N5     &kp KP_N6      &kp KP_PLUS      &kp SQT
-&kp LSHFT  &kp Z      &kp X      &kp C      &kp V         &kp B                         &none             &none                               &kp HOME  &none       &none         &kp PG_UP      &none            &none
-&kp N      &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER          &kp RSHFT  &mo FN_LAYER      &kp GRAVE         &kp CAPS      &kp LEFT   &kp RIGHT            &kp BKSP    &kp DEL       &kp END        &kp PG_DN        &kp ENTER
+//    ┌──────┬───┬───┬───┬─────┬───┬──────┐                                    ┌────────────────┬──────┬──────┬──────┬──────┬──────┬─────┐
+//    │  =   │ 2 │ 1 │ 3 │  4  │ 5 │      │                                    │ mo MOD_laltYER │  6   │ nlck │ kp_= │ kp_/ │ kp_* │  -  │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┤                                    ├────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │ tab  │ Q │ W │ E │  R  │ T │      │                                    │                │  Y   │  7   │  8   │  9   │ kp_- │  \  │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┼───────────────┬──────┬──────┬──────┼────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │ esc  │ A │ S │ D │  F  │ G │      │     lctl      │ lgui │ lalt │ rctl │                │  H   │  4   │  5   │  6   │ kp_+ │  '  │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┴───────────────┼──────┼──────┼──────┴────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │ lsft │ Z │ X │ C │  V  │ B │                      │      │      │                       │ home │  1   │  2   │  3   │ ent  │     │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┬───────────────┼──────┼──────┼──────┬────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │  N   │ 1 │ 2 │ 3 │ ent │   │ rsft │ mo FN_laltYER │  `   │ caps │ ent  │       0        │      │ BKSP │ del  │ end  │ pgdn │ ent │
+//    └──────┴───┴───┴───┴─────┘   └──────┴───────────────┴──────┴──────┴──────┴────────────────┘      └──────┴──────┴──────┴──────┴─────┘
+  &kp EQUAL   &kp N2      &kp N1      &kp N3      &kp N4         &kp N5   &trans                                                               &mo MOD_LAYER   &kp N6     &kp KP_NUM   &kp KP_EQUAL   &kp KP_DIVIDE   &kp KP_MULTIPLY   &kp MINUS
+  &kp TAB     &kp Q       &kp W       &kp E       &kp R          &kp T    &none                                                                &none           &kp Y      &kp KP_N7    &kp KP_N8      &kp KP_N9       &kp KP_MINUS      &kp BSLH
+  &kp ESC     &kp A       &kp S       &kp D       &kp F          &kp G    &none       &kp LCTRL      &kp LEFT_GUI   &kp LEFT_ALT   &kp RCTRL   &none           &kp H      &kp KP_N4    &kp KP_N5      &kp KP_N6       &kp KP_PLUS       &kp SQT
+  &kp LSHFT   &kp Z       &kp X       &kp C       &kp V          &kp B                               &none          &none                                      &kp HOME   &kp KP_N1    &kp KP_N2      &kp KP_N3       &kp ENTER         &none
+  &kp N       &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_ENTER            &kp RSHFT   &mo FN_LAYER   &kp GRAVE      &kp CAPS       &kp ENTER   &kp KP_N0                  &kp BKSP     &kp DEL        &kp END         &kp PG_DN         &kp ENTER
             >;
         };
 
         fn {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &tog KEYPAD_LAYER                                      &mo MOD_LAYER   &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans  &none                                       &none   &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &none   &trans  &trans      &trans  &trans  &none   &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &none       &none                   &trans  &none   &none   &trans   &none    &none
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans   &trans   &trans
+//    ┌─────┬─────┬─────┬─────┬─────┬─────┬────────────────────┐                       ┌────────────────┬─────┬─────┬─────┬─────┬─────┬─────┐
+//    │ f1  │ f2  │ f3  │ f4  │ f5  │ f6  │ tog KEYPAD_laltYER │                       │ mo MOD_laltYER │ f7  │ f8  │ f9  │ f10 │ f11 │ f12 │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┼────────────────────┤                       ├────────────────┼─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │                    │                       │                │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┼────────────────────┼─────┬─────┬─────┬─────┼────────────────┼─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │                    │     │     │     │     │                │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┼────────────────────┴─────┼─────┼─────┼─────┴────────────────┼─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │                          │     │     │                      │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┼────────────────────┬─────┼─────┼─────┼─────┬────────────────┼─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │                    │     │     │     │     │                │     │     │     │     │     │     │
+//    └─────┴─────┴─────┴─────┴─────┘     └────────────────────┴─────┴─────┴─────┴─────┴────────────────┘     └─────┴─────┴─────┴─────┴─────┘
+  &kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6   &tog KEYPAD_LAYER                                       &mo MOD_LAYER   &kp F7   &kp F8   &kp F9   &kp F10   &kp F11   &kp F12
+  &trans   &trans   &trans   &trans   &trans   &trans   &none                                                   &none           &trans   &trans   &trans   &trans    &trans    &trans
+  &trans   &trans   &trans   &trans   &trans   &trans   &none               &trans   &trans   &trans   &trans   &none           &trans   &trans   &trans   &trans    &trans    &trans
+  &trans   &trans   &trans   &trans   &trans   &trans                                &none    &none                             &trans   &none    &none    &trans    &none     &none
+  &trans   &trans   &trans   &trans   &trans            &trans              &trans   &trans   &trans   &trans   &trans                   &trans   &trans   &trans    &trans    &trans
             >;
         };
 
         mod {
             bindings = <
-&none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none                                                                       &trans                  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
-&none  &none         &none         &none         &none         &none         &bootloader                                                                 &bootloader             &none         &none            &none         &none         &none         &none
-&none  &none         &none         &none         &none         &none         &rgb_ug RGB_MEFS_CMD 5  &bt BT_CLR  &bt BT_CLR      &bt BT_CLR  &bt BT_CLR  &rgb_ug RGB_MEFS_CMD 5  &none         &none            &none         &none         &none         &none
-&none  &none         &none         &none         &none         &none                                             &none           &none                                           &none         &none            &none         &none         &none         &none
-&none  &none         &none         &none         &none                       &none                   &none       &none           &none       &bl BL_INC  &bl BL_DEC                            &rgb_ug RGB_TOG  &bl BL_TOG    &none         &none         &bl BL_TOG
+//    ┌─────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────────────────┐                                    ┌──────────────────────┬──────────┬──────────┬──────────┬──────────┬──────────┬─────────┐
+//    │     │ bt_sel 0 │ bt_sel 1 │ bt_sel 2 │ bt_sel 3 │ bt_sel 4 │                      │                                    │                      │ bt_sel 0 │ bt_sel 1 │ bt_sel 2 │ bt_sel 3 │ bt_sel 4 │         │
+//    ├─────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────────────────┤                                    ├──────────────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼─────────┤
+//    │     │          │          │          │          │          │         boot         │                                    │         boot         │          │          │          │          │          │         │
+//    ├─────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────────────────┼────────┬────────┬────────┬─────────┼──────────────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼─────────┤
+//    │     │          │          │          │          │          │ ug_ rguiB_MEFS_CMD 5 │ bt_clr │ bt_clr │ bt_clr │ bt_clr  │ ug_ rguiB_MEFS_CMD 5 │          │          │          │          │          │         │
+//    ├─────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────────────────┴────────┼────────┼────────┼─────────┴──────────────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼─────────┤
+//    │     │          │          │          │          │          │                               │        │        │                                │          │          │          │          │          │         │
+//    ├─────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────────────────┬────────┼────────┼────────┼─────────┬──────────────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼─────────┤
+//    │     │          │          │          │          │          │                      │        │        │        │ bl_ br+ │       bl_ br-        │          │ ug_ tog  │ bl_ tog  │          │          │ bl_ tog │
+//    └─────┴──────────┴──────────┴──────────┴──────────┘          └──────────────────────┴────────┴────────┴────────┴─────────┴──────────────────────┘          └──────────┴──────────┴──────────┴──────────┴─────────┘
+  &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none                                                                        &trans                   &bt BT_SEL 0   &bt BT_SEL 1      &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &none
+  &none   &none          &none          &none          &none          &none          &bootloader                                                                  &bootloader              &none          &none             &none          &none          &none          &none
+  &none   &none          &none          &none          &none          &none          &rgb_ug RGB_MEFS_CMD 5   &bt BT_CLR   &bt BT_CLR   &bt BT_CLR   &bt BT_CLR   &rgb_ug RGB_MEFS_CMD 5   &none          &none             &none          &none          &none          &none
+  &none   &none          &none          &none          &none          &none                                                &none        &none                                              &none          &none             &none          &none          &none          &none
+  &none   &none          &none          &none          &none                         &none                    &none        &none        &none        &bl BL_INC   &bl BL_DEC                              &rgb_ug RGB_TOG   &bl BL_TOG     &none          &none          &bl BL_TOG
             >;
         };
 
     };
+
 };
