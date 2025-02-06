@@ -243,22 +243,22 @@
 
         keypad {
             bindings = <
-//    ┌──────┬───┬───┬───┬─────┬───┬──────┐                                    ┌────────────────┬──────┬──────┬──────┬──────┬──────┬─────┐
-//    │  =   │ 2 │ 1 │ 3 │  4  │ 5 │      │                                    │ mo MOD_laltYER │  6   │ nlck │ kp_= │ kp_/ │ kp_* │  -  │
-//    ├──────┼───┼───┼───┼─────┼───┼──────┤                                    ├────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
-//    │ tab  │ Q │ W │ E │  R  │ T │      │                                    │                │  Y   │  7   │  8   │  9   │ kp_- │  \  │
-//    ├──────┼───┼───┼───┼─────┼───┼──────┼───────────────┬──────┬──────┬──────┼────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
-//    │ esc  │ A │ S │ D │  F  │ G │      │     lctl      │ lgui │ lalt │ rctl │                │  H   │  4   │  5   │  6   │ kp_+ │  '  │
-//    ├──────┼───┼───┼───┼─────┼───┼──────┴───────────────┼──────┼──────┼──────┴────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
-//    │ lsft │ Z │ X │ C │  V  │ B │                      │      │      │                       │ home │  1   │  2   │  3   │ ent  │     │
-//    ├──────┼───┼───┼───┼─────┼───┼──────┬───────────────┼──────┼──────┼──────┬────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
-//    │  N   │ 1 │ 2 │ 3 │ ent │   │ rsft │ mo FN_laltYER │  `   │ caps │ ent  │       0        │      │ BKSP │ del  │ end  │ pgdn │ ent │
-//    └──────┴───┴───┴───┴─────┘   └──────┴───────────────┴──────┴──────┴──────┴────────────────┘      └──────┴──────┴──────┴──────┴─────┘
-  &kp EQUAL   &kp N2      &kp N1      &kp N3      &kp N4         &kp N5   &trans                                                               &mo MOD_LAYER   &kp N6     &kp KP_NUM   &kp KP_EQUAL   &kp KP_DIVIDE   &kp KP_MULTIPLY   &kp MINUS
-  &kp TAB     &kp Q       &kp W       &kp E       &kp R          &kp T    &none                                                                &none           &kp Y      &kp KP_N7    &kp KP_N8      &kp KP_N9       &kp KP_MINUS      &kp BSLH
-  &kp ESC     &kp A       &kp S       &kp D       &kp F          &kp G    &none       &kp LCTRL      &kp LEFT_GUI   &kp LEFT_ALT   &kp RCTRL   &none           &kp H      &kp KP_N4    &kp KP_N5      &kp KP_N6       &kp KP_PLUS       &kp SQT
-  &kp LSHFT   &kp Z       &kp X       &kp C       &kp V          &kp B                               &none          &none                                      &kp HOME   &kp KP_N1    &kp KP_N2      &kp KP_N3       &kp ENTER         &none
-  &kp N       &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_ENTER            &kp RSHFT   &mo FN_LAYER   &kp GRAVE      &kp CAPS       &kp ENTER   &kp KP_N0                  &kp BKSP     &kp DEL        &kp END         &kp PG_DN         &kp ENTER
+//    ┌──────┬───┬───┬───┬─────┬───┬──────┐                             ┌────────────────┬──────┬──────┬──────┬──────┬──────┬─────┐
+//    │  =   │ 2 │ 1 │ 3 │  4  │ 5 │      │                             │ mo MOD_laltYER │  6   │ nlck │ kp_= │ kp_/ │ kp_* │  -  │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┤                             ├────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │ tab  │ Q │ W │ E │  R  │ T │      │                             │                │  Y   │  7   │  8   │  9   │ kp_- │  \  │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┼────────┬──────┬──────┬──────┼────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │ esc  │ A │ S │ D │  F  │ G │      │  lctl  │ lgui │ lalt │ rctl │                │  H   │  4   │  5   │  6   │ kp_+ │  '  │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┴────────┼──────┼──────┼──────┴────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │ lsft │ Z │ X │ C │  V  │ B │               │      │      │                       │ home │  1   │  2   │  3   │ ent  │     │
+//    ├──────┼───┼───┼───┼─────┼───┼──────┬────────┼──────┼──────┼──────┬────────────────┼──────┼──────┼──────┼──────┼──────┼─────┤
+//    │  N   │ 1 │ 2 │ 3 │ ent │   │ BKSP │ mo del │ lalt │ caps │ ent  │       0        │      │ BKSP │ del  │ end  │ pgdn │ ent │
+//    └──────┴───┴───┴───┴─────┘   └──────┴────────┴──────┴──────┴──────┴────────────────┘      └──────┴──────┴──────┴──────┴─────┘
+  &kp EQUAL   &kp N2      &kp N1      &kp N3      &kp N4         &kp N5   &trans                                                           &mo MOD_LAYER   &kp N6     &kp KP_NUM   &kp KP_EQUAL   &kp KP_DIVIDE   &kp KP_MULTIPLY   &kp MINUS
+  &kp TAB     &kp Q       &kp W       &kp E       &kp R          &kp T    &none                                                            &none           &kp Y      &kp KP_N7    &kp KP_N8      &kp KP_N9       &kp KP_MINUS      &kp BSLH
+  &kp ESC     &kp A       &kp S       &kp D       &kp F          &kp G    &none      &kp LCTRL   &kp LEFT_GUI   &kp LEFT_ALT   &kp RCTRL   &none           &kp H      &kp KP_N4    &kp KP_N5      &kp KP_N6       &kp KP_PLUS       &kp SQT
+  &kp LSHFT   &kp Z       &kp X       &kp C       &kp V          &kp B                           &none          &none                                      &kp HOME   &kp KP_N1    &kp KP_N2      &kp KP_N3       &kp ENTER         &none
+  &kp N       &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_ENTER            &kp BKSP   &mo DEL     &kp LALT       &kp CAPS       &kp ENTER   &kp KP_N0                  &kp BKSP     &kp DEL        &kp END         &kp PG_DN         &kp ENTER
             >;
         };
 
